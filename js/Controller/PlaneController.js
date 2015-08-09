@@ -8,7 +8,7 @@ angular.module('appPlane' , []).controller('PlaneController' , function($scope ,
     var time = new Date();
     var timestamp=new Date().getTime();
     $scope.today = time.format('yyyy/MM/dd');
-    $('#time').val(timestamp);
+    $('#demo').attr('time',timestamp);
     //$scope.host = conf.common.webHost;
     var server = new ClientServer($http , $scope);
     //server.createRequest('index' , 'getHotCity' , 'hotCity');
@@ -19,7 +19,7 @@ angular.module('appPlane' , []).controller('PlaneController' , function($scope ,
         data.aCityName = $('.aCityName').html();
         data.time = $('#demo').attr('time');
         server.createRequest('flight' , 'getSearch/c/'+data.dCityName+'-'+data.aCityName+'-'+parseInt(data.time/1000)).then(function(d){
-
+            window.location.href = './plane_cw.html?'+'dCity='+d.dCityCode+'&aCity='+d.aCityCode+'&date='+d.departDate;
         })
     }
 })

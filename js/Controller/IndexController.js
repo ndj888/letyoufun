@@ -3,8 +3,8 @@
  */
 
 angular.module('appIndex' , []).controller('IndexController' , function($scope , $http ){
-    $scope.host = 'http://192.168.99.190/letyoufunR010/';
-    //$scope.host = conf.common.webHost;
+    //$scope.host = 'http://192.168.99.190/letyoufunR010/';
+    $scope.host = conf.common.webHost;
     var server = new ClientServer($http , $scope);
         server.createRequest('index' , 'getHotCity' , 'hotCity');
         server.createRequest('index' , 'getTravel' , 'travelList');

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="appTravel">
+<head>
+  <meta charset="utf-8">
+  <title>乐有方</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--Public-->
+    <script src="conf/conf.js"></script>
+    <script src="js/Common/main.js"></script>
+    <script src="js/Common/angular.min.js"></script>
+    <script src="js/Server/ClientServer.js"></script>
+    <!--angularjs-->
+    <script src="js/Controller/TravelConController.js"></script>
+  <!-- Roboto -->
+  <link rel="stylesheet" href="css/common/ratchet.min.css">
+  <link rel="stylesheet" href="css/common/app.css">
+  
+</head>
+<body ng-controller="TravelConController">
+ <header class="bar bar-nav orange">
+  <a class="icon icon-left-nav pull-left"></a>
+  <h1 class="title">产品详情</h1>
+</header>
+<div class="content pad50 grey" id="main_box">
+  <section>
+    <div class="intro_tra white">
+      <img ng-src="{{hotelDetal.data.mainimage.url}}" class="w100">
+      <!--<img src="images/tra_con.jpg" class="w100">-->
+      <h3>{{lists.data.hotelname}}</h3>
+     <p><span>乐有方价： ￥{{lists.data.rooms[0].ourprice}}起</span><i> 乐有方价：<em> ￥{{lists.data.rooms[0].ourprice}}</em>起</i></p>
+    </div>
+  </section>
+  <section>
+   <ul class="table-view">
+    <li class="table-view-cell">
+    <a class="navigate-right">
+      <h3 class="tra_con_tit tuan">查看和选择团期</h3>
+      <p>07-18，07-19，07-20，07-21，07-22，07-23…</p>
+    </a>
+    </li>
+   </ul>
+  </section>
+     <div class="tra_intro pad10 white">
+       <h3 class="tra_con_tit chan">产品介绍</h3>
+       <div class="tra_block">
+         杭州的春天是美丽的，在那和煦的阳光下，在花草泥土的芬芳中，满目清翠，令人不得不
+心醉。而杭州美,西湖更美.阳春三月，莺飞草长。
+<img src="images/tra_con2.jpg" class="w100"></div>
+       <div class="tra_block">
+         杭州的春天是美丽的，在那和煦的阳光下，在花草泥土的芬芳中，满目清翠，令人不得不
+心醉。而杭州美,西湖更美.阳春三月，莺飞草长。
+<img src="images/tra_con2.jpg" class="w100"></div>
+       </div>
+    <section>
+    <div class="anpai">
+      <h3 class="tra_con_tit anp">行程安排</h3>
+      <div class="an_main">
+        <dl>
+          <dt>
+            <span></span>
+          </dt>
+          <dd>
+            <h3>第1天 | 西安<span class="fei"></span>昆明</h3>
+            <p>用餐： 敬请自理</p>
+            <p>住宿： 二星或同等酒店</p>
+            <p>交通： 巴士</p>
+            <p>07:00上海博物馆南门集合出发，10:00左右到达杭州，随后漫步
+            【苏堤】，感受江南的如画美景。 --中午导游安排午餐 ，--随后
+            巴士赴（蚕丝博物馆）了解丝绸文化渊源随后赴梅家坞茶园欣赏茶
+            园风光。 --随后赴【万松书院】景区游览，了解梁山伯与祝英台的
+            爱情故事。 --17：30在黄龙洞景区停车集合，换大巴送苏州酒店
+            休息 。</p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>
+            <span></span>
+          </dt>
+          <dd>
+            <h3>第2天 | 西安<span class="fei"></span>昆明</h3>
+            <p>用餐： 敬请自理</p>
+            <p>住宿： 二星或同等酒店</p>
+            <p>交通： 巴士</p>
+            <p>07:00上海博物馆南门集合出发，10:00左右到达杭州，随后漫步
+            【苏堤】，感受江南的如画美景。 --中午导游安排午餐 ，--随后
+            巴士赴（蚕丝博物馆）了解丝绸文化渊源随后赴梅家坞茶园欣赏茶
+            园风光。 --随后赴【万松书院】景区游览，了解梁山伯与祝英台的
+            爱情故事。 --17：30在黄龙洞景区停车集合，换大巴送苏州酒店
+            休息 。</p>
+          </dd>
+        </dl>
+      </div>
+      <p class="show"><span class="icon icon-down-nav"></span><span class="icon icon-up-nav"></span></p>
+     </div> 
+    </section>   
+   <section>
+   <ul class="table-view">
+    <li class="table-view-cell">
+    <a class="navigate-right" href="travel_xz.html">
+      <h3 class="tra_con_tit fei">费用说明和预订须知</h3>
+    </a>
+    </li>
+   </ul>
+  </section>
+</div>
+<div class="bar bar-standard bar-footer yud">
+  <span class="icon icon-star"></span>
+  <a href="order.html"></a>
+</div>
+</body>
+
+</html>

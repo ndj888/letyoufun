@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="appTravel">
+<head>
+  <meta charset="utf-8">
+  <title>乐有方</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--Public-->
+    <script src="conf/conf.js"></script>
+    <script src="js/Common/main.js"></script>
+    <script src="js/Common/angular.min.js"></script>
+    <script src="js/Server/ClientServer.js"></script>
+    <!--angularjs-->
+    <script src="js/Controller/TravelConController.js"></script>
+  <!-- Roboto -->
+  <link rel="stylesheet" href="css/common/ratchet.min.css">
+  <link rel="stylesheet" href="css/common/app.css">
+  
+</head>
+<body ng-controller="TravelConController">
+ <header class="bar bar-nav orange">
+  <a class="icon icon-left-nav pull-left"></a>
+  <h1 class="title">产品详情</h1>
+</header>
+<div class="content pad50 grey" id="main_box">
+  <section>
+    <div class="intro_tra white">
+      <img ng-src="{{hotelDetal.data.mainimage.url}}" class="w100">
+      <!--<img src="images/tra_con.jpg" class="w100">-->
+      <h3>{{hotelDetal.data.hotelname}}</h3>
+     <p><span>乐有方价： ￥{{hotelDetal.data.rooms[0].ourprice}}起</span><i> 乐有方价：<em> ￥{{hotelDetal.data.rooms[0].ourprice}}</em>起</i></p>
+    </div>
+  </section>
+  <section>
+   <ul class="table-view">
+    <li class="table-view-cell">
+    <a class="navigate-right">
+      <h3 class="tra_con_tit tuan">查看和选择团期</h3>
+      <p>07-18，07-19，07-20，07-21，07-22，07-23…</p>
+    </a>
+    </li>
+   </ul>
+  </section>
+     <div class="tra_intro pad10 white">
+       <h3 class="tra_con_tit chan">产品介绍</h3>
+       <div class="tra_block">
+            {{hotelDetal.description}}
+       </div>
+    <section>
+    <div class="anpai">
+      <h3 class="tra_con_tit anp">房间展示</h3>
+      <div class="an_main">
+            <span ng-repeat="v in hotelDetal.data.images"><img ng-src="{{v.url}}"/></span>
+      </div>
+      <p class="show"><span class="icon icon-down-nav"></span><span class="icon icon-up-nav"></span></p>
+     </div>
+    </section>   
+   <section>
+   <ul class="table-view">
+    <li class="table-view-cell">
+    <a class="navigate-right" href="travel_xz.html">
+      <h3 class="tra_con_tit fei">费用说明和预订须知</h3>
+    </a>
+    </li>
+   </ul>
+  </section>
+</div>
+<div class="bar bar-standard bar-footer yud">
+  <span class="icon icon-star"></span>
+  <a href="order.html"></a>
+</div>
+</body>
+
+</html>

@@ -1,56 +1,84 @@
 <!DOCTYPE html>
-<html ng-app="appFlight">
-<head>
-    <meta charset="utf-8" />
+<html>
+  <head>
+    <meta charset="utf-8">
     <title>乐有方</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <!--public-->
-    <script src="js/Common/angular.min.js"></script>
-    <script src="conf/conf.js"></script>
-    <script src="js/Common/main.js"></script>
-    <!--angluarjs-->
-    <script src="js/Controller/FlightBookController.js"></script>
-    <script src="js/Model/FlightModel.js"></script>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
     <!-- Roboto -->
-    <link rel="stylesheet" href="css/common/ratchet.min.css" />
-    <link rel="stylesheet" href="css/common/app.css" />
-</head>
-<body class="grey" ng-controller="FlightBookController">
-<header class="bar bar-nav orange">
-    <a class="icon icon-left-nav pull-left"></a>
-    <h1 class="title">舱位选择</h1>
+    <link rel="stylesheet" href="css/common/ratchet.min.css">
+    <link rel="stylesheet" href="css/common/app.css">
+</script>
+  </head>
+  <body class="grey">
+   <header class="bar bar-nav orange">
+  <a class="icon icon-left-nav pull-left"></a>
+  <h1 class="title">舱位选择</h1>
 </header>
-<div class="content pad50 grey" id="main_box">
-    <div class="plane_cw">
-        <section>
-            <div class="plane_infor">
-                <p class="hk_infor"> <span><img src="images/plane_icon4.jpg" />2015-07-09</span> <span><img src="images/hkicon.jpg" />深圳航空公司ZH9959<em>738</em><em>中</em></span> </p>
-                <div class="add_plane pad10">
-                    <div class="addbox1">
-                        <h3>上海</h3>
-                        <h5>07:13</h5>
-                        <p>上海虹桥国际机场</p>
-                    </div>
-                    <div class="addbox2">
-                        <img src="images/plane_icon3.jpg" />
-                    </div>
-                    <div class="addbox1">
-                        <h3>深圳</h3>
-                        <h5>07:13</h5>
-                        <p>深圳宝安国际机场</p>a
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section>
-            <ul class="table-view plane_list nopa">
-                <li class="table-view-cell" ng-repeat="v in flightLowPrice"> <button class="btn btn-orange" ng-click="makeOrder(v.minprice)">预订</button> <span href="./pay.html" class="pull-right money">￥{{v.minprice}}</span> <h4>(经济舱)3.2折</h4> <p><a href="#">退订规定</a></p> </li>
-            </ul>
-            <a class="more_cw" href="#">更多舱位<span class="icon icon-down-nav"></span></a>
-        </section>
-    </div>
-</div>
+  <div class="content pad50 grey" id="main_box">
+  <div class="plane_cw">
+    <section>
+      <div class="plane_infor">
+        <p class="hk_infor">
+          <span><img src="images/plane_icon4.jpg">2015-07-09</span>
+          <span><img src="images/hkicon.jpg">深圳航空公司ZH9959<em>738</em><em>中</em></span>
+        </p>
+        <div class="add_plane pad10">
+          <div class="addbox1">
+            <h3>深圳</h3>
+            <h5>07:13</h5>
+            <p>深圳宝安国际机场</p>
+          </div>
+          <div class="addbox2">
+            <img src="images/plane_icon3.jpg">
+          </div>
+          <div class="addbox1">
+            <h3>深圳</h3>
+            <h5>07:13</h5>
+            <p>深圳宝安国际机场</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <ul class="table-view plane_list nopa">
+      <li class="table-view-cell">
+      <button class="btn btn-orange">预订</button>
+      <span href="#" class="pull-right money">￥300</span>
+      <h4>(经济舱)3.2折</h4>
+      <p><a href="#">退订规定</a></p>
+      </li>
+      <li class="table-view-cell">
+      <button class="btn btn-orange">预订</button>
+      <span href="#" class="pull-right money">￥300</span>
+      <h4>(经济舱)3.2折</h4>
+      <p><a href="#">退订规定</a></p>
+      </li>
+      <li class="table-view-cell">
+      <button class="btn btn-orange">预订</button>
+      <span href="#" class="pull-right money">￥300</span>
+      <h4>(经济舱)3.2折</h4>
+      <p><a href="#">退订规定</a></p>
+      </li>
+      <li class="table-view-cell">
+      <button class="btn btn-orange">预订</button>
+      <span href="#" class="pull-right money">￥300</span>
+      <h4>(经济舱)3.2折</h4>
+      <p><a href="#">退订规定</a></p>
+      </li>
+      <li class="table-view-cell">
+      <button class="btn btn-orange">预订</button>
+      <span href="#" class="pull-right money">￥300</span>
+      <h4>(经济舱)3.2折</h4>
+      <p><a href="#">退订规定</a></p>
+      </li>
+     </ul>
+     <a class="more_cw" href="#">更多舱位<span class="icon icon-down-nav"></span></a>
+    </section>
+  </div> 
+ </div> 
 </body>
+
 </html>

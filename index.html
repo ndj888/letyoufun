@@ -7,8 +7,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <!--angularjs-->
+    <!--Public-->
+    <script src="conf/conf.js"></script>
+    <script src="js/Common/main.js"></script>
     <script src="js/Common/angular.min.js"></script>
+    <script src="js/Server/ClientServer.js"></script>
+    <!--angularjs-->
     <script src="js/Controller/IndexController.js"></script>
   <!-- Roboto -->
   <link rel="stylesheet" href="css/common/ratchet.min.css">
@@ -16,19 +20,17 @@
   <script src="js/Common/ratchet.min.js"></script>
   <script src="js/Common/zepto.js"></script>
   <script src="js/Common/comm.js"> </script>
-    <script src="conf/conf.js"></script>
-    <script src="js/Common/main.js"></script>
+  <script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
   <script type="text/javascript">
    $(function(){
-    $.swarp(".imgshow1"); 
-    $.swarp(".imgshow2"); 
-    $.swarp(".imgshow3"); 
-    $.swarp(".imgshow4"); 
-    $.swarp(".imgshow5"); 
-    $.deswarp(".destination");
+  
     $.tap(".cityCon span");
   });
  </script>
+ <style type="text/css">
+ 
+  
+ </style>
 </head>
 <body ng-controller="IndexController">
   <header class="bar bar-nav orange head">
@@ -68,23 +70,23 @@
   });
   </script>
   <aside class="bar-tab lv_btn padtb10">
-    <a href="javascript:(window.location.href='plane.html')" class="tab-item">
+    <a href="travel.html" class="tab-item">
       <span class="icon"><img src="images/indexicon.jpg"></span>
       <span class="tab-label">团游</span>
     </a>
-    <a href="javascript:(window.location.href='travel.html')" class="tab-item">
+    <a href="travel.html" class="tab-item">
       <span class="icon"><img src="images/indexicon2.jpg"></span>
       <span class="tab-label">门票</span>
     </a>
-    <a href="javascript:(window.location.href='hotel.html')" class="tab-item">
+    <a href="hotel.html" class="tab-item">
       <span class="icon"><img src="images/indexicon3.jpg"></span>
       <span class="tab-label">酒店</span>
     </a>
-    <a href="javascript:(window.location.href='plane.html')" class="tab-item">
+    <a href="plane.html" class="tab-item">
       <span class="icon"><img src="images/indexicon4.jpg"></span>
       <span class="tab-label">机票</span>
     </a>
-    <a href="javascript:(window.location.href='travel.html')" class="tab-item">
+    <a href="travel.html" class="tab-item">
       <span class="icon"><img src="images/indexicon5.jpg"></span>
       <span class="tab-label">火车票</span>
     </a>
@@ -107,103 +109,146 @@
       </a>
     </dd>
   </dl>
-  <div class="destination">
-    <div class="deswrap clearfix">
-      <ul class="clearfix deswul" ng-repeat="val in hotCity">
-       <li ng-repeat="v in val">
-        <a href="travelCon.html">
-         <img src="images/img1.jpg">
-         <p>{{v.cityname}}</p>
-       </a>
-     </li>
-</ul>
-</div>
-<ul class="desbtn">
-    <li class="cur"></li>
-    <li></li>
-    <li></li>
-</ul>
-</div>
+  <div id="picScroll" class="picScroll">
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <div class="bd">
+            <ul ng-repeat="val in hotCity.lists">
+  <li ng-repeat="v in val">
+    <a href="travel.html">
+      <img src="images/img1.jpg">
+      <p>{{v.cityname}}</p>
+    </a>
+  </li>
+            </ul>
+            <ul></ul>
+            <ul></ul>
+        </div>
+      </div>
+      <script type="text/javascript">
+            TouchSlide({
+                slideCell:"#picScroll",
+                titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+                autoPage:true, //自动分页
+                pnLoop:"false", // 前后按钮不循环
+                switchLoad:"_src" //切换加载，真实图片路径为"_src"
+            });
+      </script>
 <div class="index_box hasbot">
   <h3>周边推荐</h3>
-  <div class="imgshow imgshow1">
-    <div class="imgwarp clearfix">
-      <div class="pad10" ng-repeat="v in travelList">
-        <a href="travelCon.html">
-        <dl>
-          <dt><img ng-src="{{v.image_url}}"></dt>
-          <dd>
-            <p>{{v.packagename}}</p>
-              <p>价格：<span>{{v.today_price}}</span><em>|</em>分期：<span>￥{{v.fenqi.price}}×{{v.fenqi.num}}</span></p>
-          </dd>
-        </dl>
-      </a>
-      </div>
+ <div id="slideBox1" class="slideBox slideBox1">
+    <div class="bd">
+      <ul>
+          <li ng-repeat="v in travelList.zhoubian">
+              <a href="#" ng-click="goToDetal('travel' , v.packageid , 'travelDetal');">
+              <dl>
+                  <dt><img ng-src="{{host}}{{v.picture}}"></dt>
+                  <dd>
+                      <p>{{v.title}}</p>
+                      <p><span>{{v.other_info}}</span><em>|</em><span>{{v.special_info}}</span></p>
+                  </dd>
+              </dl>
+          </a>
+      </li>
+      </ul>
     </div>
-    <ul class="picbtn">
-    	<li class="cur"></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    </ul>
+
+    <div class="hd">
+      <ul></ul>
+    </div>
   </div>
+  <script type="text/javascript">
+    TouchSlide({ 
+      slideCell:"#slideBox1",
+      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      mainCell:".bd ul", 
+      effect:"leftLoop", 
+      autoPage:true,//自动分页
+      autoPlay:false //自动播放
+    });
+  </script>
 </div>
+
 <div class="index_box hasbot">
   <h3>境内推荐</h3>
-  <div class="imgshow imgshow2">
-    <div class="imgwarp clearfix">
-        <div class="pad10" ng-repeat="v in jingnei">
-            <a href="travelCon.html">
-                <dl>
-                    <dt><img ng-src="{{v.image_url}}"></dt>
-                    <dd>
-                        <p>{{v.packagename}}</p>
-                        <p>价格：<span>{{v.today_price}}</span><em>|</em>分期：<span>￥{{v.fenqi.price}}×{{v.fenqi.num}}</span></p>
-                    </dd>
-                </dl>
-            </a>
-        </div>
+ <div id="slideBox2" class="slideBox slideBox2">
+    <div class="bd">
+      <ul>
+          <li ng-repeat="v in travelList.jingnei">
+              <a href="#" ng-click="goToDetal('travel' , v.packageid , 'travelDetal');">
+                  <dl>
+                      <dt><img ng-src="{{host}}{{v.picture}}"></dt>
+                      <dd>
+                          <p>{{v.title}}</p>
+                          <p><span>{{v.other_info}}</span><em>|</em><span>{{v.special_info}}</span></p>
+                      </dd>
+                  </dl>
+              </a>
+          </li>
 
+      </ul>
     </div>
-    <ul class="picbtn">
-    	<li class="cur"></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    </ul>
+
+    <div class="hd">
+      <ul></ul>
+    </div>
   </div>
+  <script type="text/javascript">
+    TouchSlide({ 
+      slideCell:"#slideBox2",
+      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      mainCell:".bd ul", 
+      effect:"leftLoop", 
+      autoPage:true,//自动分页
+      autoPlay:false //自动播放
+    });
+  </script>
 </div>
+
 <div class="index_box hasbot">
   <h3>境外推荐</h3>
-  <div class="imgshow imgshow3">
-    <div class="imgwarp clearfix">
-        <div class="pad10" ng-repeat="v in jingwai">
-            <a href="travelCon.html">
-                <dl>
-                    <dt><img ng-src="{{v.image_url}}"></dt>
-                    <dd>
-                        <p>{{v.packagename}}</p>
-                        <p>价格：<span>{{v.today_price}}</span><em>|</em>分期：<span>￥{{v.fenqi.price}}×{{v.fenqi.num}}</span></p>
-                    </dd>
-                </dl>
-            </a>
-        </div>
+ <div id="slideBox3" class="slideBox slideBox1">
+    <div class="bd">
+      <ul>
+          <li ng-repeat="v in travelList.jingwai">
+              <a href="#" ng-click="goToDetal('travel' , v.packageid , 'travelDetal');">
+                  <dl>
+                      <dt><img ng-src="{{host}}{{v.picture}}"></dt>
+                      <dd>
+                          <p>{{v.title}}</p>
+                          <p><span>{{v.other_info}}</span><em>|</em><span>{{v.special_info}}</span></p>
+                      </dd>
+                  </dl>
+              </a>
+          </li>
 
+      </ul>
     </div>
-    <ul class="picbtn">
-    	<li class="cur"></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    </ul>
+
+    <div class="hd">
+      <ul></ul>
+    </div>
   </div>
+  <script type="text/javascript">
+    TouchSlide({ 
+      slideCell:"#slideBox3",
+      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      mainCell:".bd ul", 
+      effect:"leftLoop", 
+      autoPage:true,//自动分页
+      autoPlay:false //自动播放
+    });
+  </script>
 </div>
+
 <div class="index_box hasbot">
   <h3>门票推荐</h3>
-  <div class="imgshow imgshow4">
-    <div class="imgwarp clearfix">
-      <div class="pad10">
-        <a href="travelCon.html">
+ <div id="slideBox4" class="slideBox slideBox4">
+    <div class="bd">
+      <ul>
+          <li>
+            <a href="travelCon.html">
         <dl>
           <dt><img src="images/img5.jpg"></dt>
           <dd>
@@ -212,9 +257,9 @@
           </dd>
         </dl>
       </a>
-      </div>
-      <div class="pad10">
-        <a href="travelCon.html">
+          </li>
+          <li>
+            <a href="travelCon.html">
         <dl>
           <dt><img src="images/img5.jpg"></dt>
           <dd>
@@ -223,9 +268,9 @@
           </dd>
         </dl>
       </a>
-      </div>
-      <div class="pad10">
-        <a href="travelCon.html">
+          </li>
+          <li>
+            <a href="travelCon.html">
         <dl>
           <dt><img src="images/img5.jpg"></dt>
           <dd>
@@ -234,9 +279,9 @@
           </dd>
         </dl>
       </a>
-      </div>
-      <div class="pad10">
-        <a href="travelCon.html">
+          </li>
+          <li>
+            <a href="travelCon.html">
         <dl>
           <dt><img src="images/img5.jpg"></dt>
           <dd>
@@ -245,73 +290,61 @@
           </dd>
         </dl>
       </a>
-      </div>
+          </li>
+      </ul>
     </div>
-    <ul class="picbtn">
-    	<li class="cur"></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    </ul>
+
+    <div class="hd">
+      <ul></ul>
+    </div>
   </div>
+  <script type="text/javascript">
+    TouchSlide({
+      slideCell:"#slideBox4",
+      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      mainCell:".bd ul",
+      effect:"leftLoop",
+      autoPage:true,//自动分页
+      autoPlay:false //自动播放
+    });
+  </script>
 </div>
+
 <div class="index_box hasbot">
   <h3>酒店推荐</h3>
-  <div class="imgshow imgshow5">
-    <div class="imgwarp clearfix">
-      <div class="pad10">
-        <a href="hotelCon.html">
-        <dl>
-          <dt><img src="images/img6.jpg"></dt>
-          <dd>
-            <p>云阳张飞庙一日游</p>
-            <p>价格：<span>200</span><em>|</em>分期：<span>￥100×2</span></p>
-          </dd>
-        </dl>
-      </a>
-      </div>
-      <div class="pad10">
-        <a href="hotelCon.html">
-        <dl>
-          <dt><img src="images/img6.jpg"></dt>
-          <dd>
-            <p>云阳张飞庙一日游</p>
-            <p>价格：<span>200</span><em>|</em>分期：<span>￥100×2</span></p>
-          </dd>
-        </dl>
-      </a>
-      </div>
-      <div class="pad10">
-        <a href="hotelCon.html">
-        <dl>
-          <dt><img src="images/img6.jpg"></dt>
-          <dd>
-            <p>云阳张飞庙一日游</p>
-            <p>价格：<span>200</span><em>|</em>分期：<span>￥100×2</span></p>
-          </dd>
-        </dl>
-      </a>
-      </div>
-      <div class="pad10">
-        <a href="hotelCon.html">
-        <dl>
-          <dt><img src="images/img6.jpg"></dt>
-          <dd>
-            <p>云阳张飞庙一日游</p>
-            <p>价格：<span>200</span><em>|</em>分期：<span>￥100×2</span></p>
-          </dd>
-        </dl>
-      </a>
-      </div>
+ <div id="slideBox5" class="slideBox slideBox5">
+    <div class="bd">
+      <ul>
+          <li ng-repeat="v in hotHotel.lists">
+              <a href="#" ng-click="goToDetal('index' ,v.hotelid , 'hotelDetal' , 'hotelCon')">
+                  <dl>
+                      <dt><img ng-src="{{v.Image}}"></dt>
+                      <dd>
+                          <p>{{v.hotelname}}</p>
+                          <p><span>价格：{{v.ourprice}}</span><em>|</em><span>月供：{{v.MonthPay}}<em>× 12</em></span></p>
+                      </dd>
+                  </dl>
+              </a>
+          </li>
+      </ul>
     </div>
-    <ul class="picbtn">
-    	<li class="cur"></li>
-    	<li></li>
-    	<li></li>
-    	<li></li>
-    </ul>
+
+    <div class="hd">
+      <ul></ul>
+    </div>
   </div>
+  <script type="text/javascript">
+    TouchSlide({ 
+      slideCell:"#slideBox5",
+      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      mainCell:".bd ul", 
+      effect:"leftLoop", 
+      autoPage:true,//自动分页
+      autoPlay:false //自动播放
+    });
+  </script>
 </div>
+
 </div>
 <nav class="bar bar-tab sfoot">
   <a class="tab-item" href="index.html">
@@ -343,10 +376,6 @@
     <a class="icon icon-close pull-right" href="#myModalexample2"></a>
     <h1 class="title">选择城市</h1>
   </header>
-  <header class="bar bar-nav">
-      <a class="icon icon-close pull-left" href="#myModalexample3"></a>
-      <h1 class="title">筛选</h1>
-    </header>
     <div class="content city" style="margin-top:-100px">
       <section>
         <input type="text" placeholder="0"> <input type="text" placeholder="0">
@@ -430,7 +459,8 @@
         <p class="hottit">C</p>
         <span>成都</span><span>重庆</span><span>长沙</span><span>长春</span><span>常州</span>
       </div>
-    </div>  
+    </div> 
+  </div>   
 </body>
 
 </html>

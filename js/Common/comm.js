@@ -89,3 +89,9 @@ $.tap=function(obj){
 	});
 	
 }	
+$.clicktap=function(obj){
+	$(obj).click(function(){
+		$(this).addClass("on").siblings().removeClass("on");
+	});
+	
+}	

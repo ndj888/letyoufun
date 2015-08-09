@@ -95,6 +95,12 @@ Date.prototype.format = function(format){
     return format;
 }
 
+
+/**
+ * 获取url参数
+ * @param name
+ * @returns {Object}
+ */
 lyf.getUrlPram = function(name){
     var url = location.search; //获取url中"?"符后的字串
     var theRequest = new Object();
@@ -108,3 +114,12 @@ lyf.getUrlPram = function(name){
     return theRequest;
 }
 
+/**
+ * 跳转到详情页
+ * @param id
+ * @param name
+ * @param obj
+ */
+lyf.goToDetal = function(obj , name , id){
+    window.location.href = obj.href+'?type='+name+'&id='+id;
+}

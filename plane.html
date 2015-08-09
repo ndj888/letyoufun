@@ -1,296 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="appPlane">
 <head>
-  <meta charset="utf-8">
-  <title>乐有方</title>
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta charset="utf-8">
+    <title>乐有方</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <!-- Roboto -->
-  <link rel="stylesheet" href="css/common/ratchet.min.css">
-  <link rel="stylesheet" href="css/common/app.css">
-  <link rel="stylesheet" href="css/mobiscroll.custom-2.16.0.min.css" type="text/css" />
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="js/mobiscroll.custom-2.16.0.min.js"></script>
-  <script src="js/i18n/mobiscroll.i18n.zh.js"></script>
-  <script>
-  $(function () {
+    <!--Public-->
+    <script src="conf/conf.js"></script>
+    <script src="js/Common/main.js"></script>
+    <script src="js/Common/angular.min.js"></script>
+    <script src="js/Server/ClientServer.js"></script>
+    <!--angularjs-->
+    <script src="js/Controller/PlaneController.js"></script>
+    <!-- Roboto -->
+    <link rel="stylesheet" href="css/common/ratchet.min.css">
+    <link rel="stylesheet" href="css/common/app.css">
+    <link rel="stylesheet" href="css/mobiscroll.custom-2.16.0.min.css" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="js/mobiscroll.custom-2.16.0.min.js"></script>
+    <script src="js/i18n/mobiscroll.i18n.zh.js"></script>
 
+    <script>
+        $(function () {
             // Mobiscroll Calendar initialization
             $('#demo').mobiscroll().calendar({
                 theme: 'mobiscroll',        // Specify theme like: theme: 'ios' or omit setting to use default
                 lang: 'zh',                 // Specify language like: lang: 'pl' or omit setting to use default
                 display: 'bottom',          // Specify display mode like: display: 'bottom' or omit setting to use default
                 swipeDirection: 'vertical'  // More info about swipeDirection: http://docs.mobiscroll.com/2-16-0/calendar#!opt-swipeDirection
-              });
-          }); 
-  </script>
+            });
+        });
+    </script>
 </head>
-<body>
- <header class="bar bar-nav orange">
-  <a class="icon icon-left-nav pull-left"></a>
-  <h1 class="title">机票</h1>
+<body ng-controller="PlaneController">
+<header class="bar bar-nav orange">
+    <a class="icon icon-left-nav pull-left"></a>
+    <h1 class="title">机票</h1>
 </header>
 <div class="content pad50" id="main_box">
-  <section>
-    <div class="plane_tit">
-      <p class="tit_line"></p>
-      <h5>单程</h5>
-    </div>
-    <div class="citychange">
-      <div class="cityone">
-        <dl>
-          <dt></dt>
-          <dd>
-           <h6>出发城市</h6>
-           <p><a href="#myModalexample4">重庆</a></p>
-         </dd>
-       </dl>
-     </div>
-     <div class="citytwo">
+    <section>
+        <div class="plane_tit">
+            <p class="tit_line"></p>
+            <h5>单程</h5>
+        </div>
+        <div class="citychange">
+            <div class="cityone">
+                <dl>
+                    <dt></dt>
+                    <dd>
+                        <h6>出发城市</h6>
+                        <p><span class="dCityName">上海</span></p>
+                    </dd>
+                </dl>
+            </div>
+            <div class="citytwo">
 
-     </div>
-     <div class="citythree">
-      <dl>
-        <dt>
-          <h6>到达城市</h6>
-          <p><a href="#myModalexample5">北京</a></p>
-        </dt>
-        <dd>
- 
-        </dd>
-      </dl>
-    </div>
-  </div>
-</section>
-<section>
-  <ul class="table-view">
-    <li class="table-view-cell chtime nopa">
-        <h3>出发日期</h3>
-        <p>
-          <input id="demo" placeholder="7月8日" type="text"/>
-        </p>
-    </li>
-  </ul>
-  <div class="plane_bot">
-    <a class="btn btn-positive btn-block btn-orange search_plane" href="plane_list.html">搜索</a>
-    <p class="lc"><a href="#">机票预订流程说明</a></p>
-  </div>
-</section>
-<nav class="nav_txt bar-tab">
-  <ul>
-    <li>
-     <img src="images/btm_img.jpg">
-   </li>
-   <li>
-     <img src="images/btm_img2.jpg">
-   </li>
-   <li>
-     <img src="images/btm_img3.jpg">
-   </li>
- </ul>
-</nav>
+            </div>
+            <div class="citythree">
+                <dl>
+                    <dt>
+                    <h6>到达城市</h6>
+                    <p><span class="aCityName">深圳</span></p>
+                    </dt>
+                    <dd>
+
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+    <section>
+        <ul class="table-view">
+            <li class="table-view-cell chtime nopa">
+                <h3>出发日期</h3>
+                <p>
+                    <input id="demo" placeholder="{{today}}" type="text" time="0"/>
+                </p>
+            </li>
+        </ul>
+        <div class="plane_bot">
+            <button class="btn btn-positive btn-block btn-orange search_plane"  ng-click="searchFlight()">搜索</button>
+            <p class="lc"><a href="#">机票预订流程说明</a></p>
+        </div>
+    </section>
+    <nav class="nav_txt bar-tab">
+        <ul>
+            <li>
+                <img src="images/btm_img.jpg">
+            </li>
+            <li>
+                <img src="images/btm_img2.jpg">
+            </li>
+            <li>
+                <img src="images/btm_img3.jpg">
+            </li>
+        </ul>
+    </nav>
 
 </div>
 
 
-<div id="myModalexample4" class="modal city_chooze">
-  <header class="bar bar-nav">
-    <a class="icon icon-close pull-right" href="#myModalexample4"></a>
-    <h1 class="title">选择城市</h1>
-  </header>
-    <div class="content city" style="margin-top:-100px">
-      <section>
-        <input type="text" placeholder="0"> <input type="text" placeholder="0">
-      </section>
-      <div class="currentcity">
-        <p class="hottit">热门城市</p>
-        <div>重庆</div>
-      </div>
-        <div class="clearfix cityCon">
-        <p class="hottit">热门城市</p>
-        <div>
-        <span class="on">北京</span>
-        <span>上海</span>
-        <span>南京</span>
-        <span>广东</span>
-        <span>天津</span>
-        <span>北京</span>
-        <span>上海</span>
-        <span>南京</span>
-        <span>广东</span>
-        <span>天津</span>
-        <span>北京</span>
-        <span>上海</span>
-        <span>南京</span>
-        <span>广东</span>
-        <span>天津</span>
-        <span>北京</span>
-        <span>上海</span>
-        <span>南京</span>
-        <span>广东</span>
-        <span>天津</span>
-        <span>北京</span>
-        <span>上海</span>
-        <span>南京</span>
-        <span>广东</span>
-        <span>天津</span>
-        <span>北京</span>
-        <span>上海</span>
-      </div>
-      </div>
-      <div class="clearfix cityCon">
-        <p class="hottit">快速定位</p>
-        <div>
-        <a href="#A1">A</a>
-        <a href="#B1">B</a>
-        <a href="#C1">C</a>
-        <a href="#D">D</a>
-        <a href="#E">E</a>
-        <a href="#F">F</a>
-        <a href="#G">G</a>
-        <a href="#H">H</a>
-        <a href="#I">I</a>
-        <a href="#J">J</a>
-        <a href="#K">K</a>
-        <a href="#L">L</a>
-        <a href="#M">M</a>
-        <a href="#N">N</a>
-        <a href="#O">O</a>
-        <a href="#P">P</a>
-        <a href="#Q">Q</a>
-        <a href="#R">R</a>
-        <a href="#S">S</a>
-        <a href="#T">T</a>
-        <a href="#U">U</a>
-        <a href="#V">V</a>
-        <a href="#W">W</a>
-        <a href="#X">X</a>
-        <a href="#Y">Y</a>
-        <a href="#Z">Z</a>
-      </div>
-      </div>
-      <div class="clearfix cityCon">
-        <p class="hottit" name="A1" id="A1">A</p>
-        <span>鞍山</span>
-      </div>
-      <div class="clearfix cityCon" name="B1" id="B1">
-        <p class="hottit">B</p>
-        <span>北京</span>
-      </div>
-      <div class="clearfix cityCon"  name="C1" id="C1">
-        <p class="hottit">C</p>
-        <span>成都</span><span>重庆</span><span>长沙</span><span>长春</span><span>常州</span>
-      </div>
-    </div>  
-  </div>  
-  <div id="myModalexample5" class="modal city_chooze">
-  <header class="bar bar-nav">
-    <a class="icon icon-close pull-right" href="#myModalexample5"></a>
-    <h1 class="title">选择城市</h1>
-  </header>
-    <div class="content city" style="margin-top:-100px">
-      <section>
-        <input type="text" placeholder="0"> <input type="text" placeholder="0">
-      </section>
-      <div class="currentcity">
-        <p class="hottit">热门城市</p>
-        <div>重庆</div>
-      </div>
-        <div class="clearfix cityCon">
-        <p class="hottit">热门城市</p>
-        <div>
-        <span class="on">北京</span>
-        <span>上海</span>
-        <span>南京</span>
-        <span>广东</span>
-        <span>天津</span>
-        <span>北京</span>
-        <span>上海</span>
-        <span>南京</span>
-        <span>广东</span>
-        <span>天津</span>
-        <span>北京</span>
-        <span>上海</span>
-        <span>南京</span>
-        <span>广东</span>
-        <span>天津</span>
-        <span>北京</span>
-        <span>上海</span>
-        <span>南京</span>
-        <span>广东</span>
-        <span>天津</span>
-        <span>北京</span>
-        <span>上海</span>
-        <span>南京</span>
-        <span>广东</span>
-        <span>天津</span>
-        <span>北京</span>
-        <span>上海</span>
-      </div>
-      </div>
-      <div class="clearfix cityCon">
-        <p class="hottit">快速定位</p>
-        <div>
-        <a href="#A">A</a>
-        <a href="#B">B</a>
-        <a href="#C">C</a>
-        <a href="#D">D</a>
-        <a href="#E">E</a>
-        <a href="#F">F</a>
-        <a href="#G">G</a>
-        <a href="#H">H</a>
-        <a href="#I">I</a>
-        <a href="#J">J</a>
-        <a href="#K">K</a>
-        <a href="#L">L</a>
-        <a href="#M">M</a>
-        <a href="#N">N</a>
-        <a href="#O">O</a>
-        <a href="#P">P</a>
-        <a href="#Q">Q</a>
-        <a href="#R">R</a>
-        <a href="#S">S</a>
-        <a href="#T">T</a>
-        <a href="#U">U</a>
-        <a href="#V">V</a>
-        <a href="#W">W</a>
-        <a href="#X">X</a>
-        <a href="#Y">Y</a>
-        <a href="#Z">Z</a>
-      </div>
-      </div>
-      <div class="clearfix cityCon">
-        <p class="hottit" name="A" id="A">A</p>
-        <span>鞍山</span>
-      </div>
-      <div class="clearfix cityCon" name="B" id="B">
-        <p class="hottit">B</p>
-        <span>北京</span>
-      </div>
-      <div class="clearfix cityCon"  name="C" id="C">
-        <p class="hottit">C</p>
-        <span>成都</span><span>重庆</span><span>长沙</span><span>长春</span><span>常州</span>
-      </div>
-    </div> 
-  </div>  
-    <script src="js/common/ratchet.min.js"></script>
-  <script src="js/common/comm.js"></script>
-  <script type="text/javascript">
-   $(function(){
-    $.clicktap("#myModalexample4 .cityCon span");
-    $.clicktap("#myModalexample5 .cityCon span");
-  });
- </script>
+<div id="myPopover" class="popover botphone">
+    <h4></h4>
+</div>
 <script type="text/javascript">
-  $(".citytwo").click(function(){
-    var val1=$(".cityone dd p span").text();
-    var val2=$(".citythree dt p span").text();
-    $(this).toggleClass("on");
-   $(".cityone dd p span").html(val2);
-   $(".citythree dt p span").html(val1);
-  });;
+    $(".citytwo").click(function(){
+        var val1=$(".cityone dd p span").text();
+        var val2=$(".citythree dt p span").text();
+        $(this).toggleClass("on");
+        $(".cityone dd p span").html(val2);
+        $(".citythree dt p span").html(val1);
+    });;
 </script>
 </body>
 

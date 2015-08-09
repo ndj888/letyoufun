@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="appTravel">
 <head>
 	<meta charset="utf-8">
 	<title>乐有方</title>
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--Public-->
+    <script src="conf/conf.js"></script>
+    <script src="js/Common/main.js"></script>
+    <script src="js/Common/angular.min.js"></script>
+    <script src="js/Server/ClientServer.js"></script>
+    <!--angularjs-->
+    <script src="js/Controller/TravelListController.js"></script>
 
 	<!-- Roboto -->
 	<link rel="stylesheet" href="css/common/ratchet.min.css">
@@ -20,7 +28,7 @@
  </script>
 
 </head>
-<body>
+<body ng-controller="TravelListController">
 	<header class="bar bar-nav orange head">
 		<a class="pull-left tab" href="#myModalexample3">深圳</a>
 		<a class="icon pull-right" href="#myPopover"><img src="images/phoneicon.png"></a>
@@ -29,18 +37,7 @@
 	<div class="content grey" id="main_box">
 		<section class="pad10 border_bottom white">
 			<div class="dest clearfix">
-				<a href="travel_chooze.html">北京</a>
-				<a href="travel_chooze.html">法国</a>
-				<a href="travel_chooze.html">三亚</a>
-				<a href="travel_chooze.html">云南</a>
-				<a href="travel_chooze.html">北京</a>
-				<a href="travel_chooze.html">法国</a>
-				<a href="travel_chooze.html">三亚</a>
-				<a href="travel_chooze.html">云南</a>
-				<a href="travel_chooze.html">北京</a>
-				<a href="travel_chooze.html">法国</a>
-				<a href="travel_chooze.html">三亚</a>
-				<a href="travel_chooze.html">云南</a>
+                    <a href="travel_chooze.html"  ng-repeat="v in hotCity.lists[0]">{{v.cityname}}</a>
 			</div>
 			<a class="more_cw" href="travel_chooze.html">查看所有产品<span class="icon icon-right-nav"></span></a>
 		</section>
@@ -53,63 +50,13 @@
 			<div class="card travel_list">
 				<div id="item1mobile" class="control-content active">
 					<ul class="table-view">
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
+						<li class="table-view-cell media nopa" ng-repeat="v in zhoubian.lists">
+							<a class="navigate-right nopa" href="#"  ng-click="goToDetal('travel' , v.packageid , 'travelDetal');">
+                                <img class="media-object pull-left" src="{{v.image_url}}">
 								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
+									<h4>{{v.packagename}}</h4>
+									<h6><em>{{v.today_price*12}}</em>起</h6>
+									<p><span>月供<em>{{v.today_price}}</em></span><span>分<em>12</em>期</span></p>
 								</div>
 							</a> 
 						</li>
@@ -117,130 +64,32 @@
 				</div>
 				<div id="item2mobile" class="control-content">
 					<ul class="table-view">
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-222黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
+                        <li class="table-view-cell media nopa" ng-repeat="v in zhoubian.lists">
+                            <a class="navigate-right nopa" href="travelCon.html">
+                                <img class="media-object pull-left" src="{{v.image_url}}">
+                                <div class="media-body">
+                                    <h4>{{v.packagename}}</h4>
+                                    <h6><em>{{v.today_price*12}}</em>起</h6>
+                                    <p><span>月供<em>{{v.today_price}}</em></span><span>分<em>12</em>期</span></p>
+                                </div>
+                            </a>
+                        </li>
+
 					</ul>
 				</div>
 				<div id="item3mobile" class="control-content">
 					<ul class="table-view">
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-333凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
-						<li class="table-view-cell media nopa">
-							<a class="navigate-right nopa" href="travelCon.html">
-								<img class="media-object pull-left" src="images/travel_img.jpg">
-								<div class="media-body">
-									<h4><张家界-黄龙洞-凤凰古镇4日游>包含西安机场接送，含凤凰门票</h4>
-									<h6><em>￥2850</em>起</h6>
-									<p><span>月供<em>135</em></span><span>分<em>12</em>期</span></p>
-								</div>
-							</a> 
-						</li>
+                        <li class="table-view-cell media nopa" ng-repeat="v in zhoubian.lists">
+                            <a class="navigate-right nopa" href="travelCon.html">
+                                <img class="media-object pull-left" src="{{v.image_url}}">
+                                <div class="media-body">
+                                    <h4>{{v.packagename}}</h4>
+                                    <h6><em>{{v.today_price*12}}</em>起</h6>
+                                    <p><span>月供<em>{{v.today_price}}</em></span><span>分<em>12</em>期</span></p>
+                                </div>
+                            </a>
+                        </li>
+
 					</ul>
 				</div>
 			</div>

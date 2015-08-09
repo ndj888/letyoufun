@@ -32,7 +32,7 @@ ClientServer.prototype.createRequest = function(apiName , getParam , templateNam
     }else{
         //post
         this.data =  (
-        this.http.post(lyf.go(this.api[apiName] , postData)).then(function(response){
+        this.http.post(lyf.go(this.api[apiName] , getParam) , postData).then(function(response){
             return response.data;
         }));
     }
@@ -54,7 +54,7 @@ ClientServer.prototype.init = function($http , $scope){
     api['index'] = 'AppServer/Index'
     api['flight'] = 'AppServer/Flight';
     api['travel'] = 'AppServer/Travel';
-
+    api['flight'] = 'AppServer/Flight';
     this.api = api;
     this.data = {};
     this.scope = $scope;

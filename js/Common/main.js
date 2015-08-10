@@ -70,9 +70,10 @@ var lyf = {};
 /**
  * 拓展JS日期，增加格式化日期
  * @param format
+ * @param num
  * @returns {*}
  */
-Date.prototype.format = function(format){
+Date.prototype.format = function(format , num){
     var o = {
         "M+" : this.getMonth()+1, //month
         "d+" : this.getDate(), //day
@@ -82,7 +83,9 @@ Date.prototype.format = function(format){
         "q+" : Math.floor((this.getMonth()+3)/3), //quarter
         "S" : this.getMilliseconds() //millisecond
     }
-
+    if(num){
+        o['d+'] += num;
+    }
     if(/(y+)/.test(format)) {
         format = format.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
     }
@@ -112,14 +115,4 @@ lyf.getUrlPram = function(name){
         }
     }
     return theRequest;
-}
-
-/**
- * 跳转到详情页
- * @param id
- * @param name
- * @param obj
- */
-lyf.goToDetal = function(obj , name , id){
-    window.location.href = obj.href+'?type='+name+'&id='+id;
 }

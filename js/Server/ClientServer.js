@@ -24,6 +24,7 @@ ClientServer.prototype.createRequest = function(apiName , getParam , templateNam
     templateName = arguments[2] ? templateName : '';
     postData = arguments[3] ? postData : '';
     var scope = this.scope;
+        scope['isok'] = false;
     if( !postData ){
         this.data =  (
             this.http.get(lyf.go(this.api[apiName] , getParam)).then(function(response){
@@ -41,6 +42,7 @@ ClientServer.prototype.createRequest = function(apiName , getParam , templateNam
         return this.data;
     }
     this.data.then(function(d){
+        scope['isok'] = true;
         scope[templateName] = d;
     })
 }
@@ -55,6 +57,7 @@ ClientServer.prototype.init = function($http , $scope){
     api['flight'] = 'AppServer/Flight';
     api['travel'] = 'AppServer/Travel';
     api['flight'] = 'AppServer/Flight';
+
     this.api = api;
     this.data = {};
     this.scope = $scope;
@@ -70,6 +73,9 @@ ClientServer.prototype.init = function($http , $scope){
         window.location.href = './'+type+'.html?apiName='+apiName+'&id='+id+'&templateName='+templateName+'&type='+type;
     }
 }
+
+
+
 
 
 

@@ -48,7 +48,7 @@
 			</div>
 			<div class="card travel_list">
 				<div id="item1mobile" class="control-content active">
-                    <span ng-show="isData">非常抱歉，没有找到符合您条件的酒店</span>
+                    <span ng-show="{{isData}}">非常抱歉，没有找到符合您条件的酒店</span>
 					<ul class="table-view">
 						<li class="table-view-cell media nopa" ng-repeat="v in hotelLists.list">
 							<a class="navigate-right nopa" href="#" ng-click="goToDetal('index' ,v.hotelid , 'hotelDetal' , 'hotelCon');">

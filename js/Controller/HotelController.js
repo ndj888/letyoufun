@@ -29,9 +29,11 @@ var appHotel = angular.module('appHotel' , []).controller('HotelController' , fu
     }
 
     $scope.searchCity = function(cityName){
-        server.createRequest('index' , 'getHotelList?mudi='+cityName+'&hotel_start='+start+'&hotel_end='+end , 'hotelLists');
-        var isData = $scope.hotelLists.list[0] ? true : false; //是否有数据
-            console.log($scope.hotelLists.list[0]);
+        server.createRequest('index' , 'getHotelList?mudi='+cityName+'&hotel_start='+start+'&hotel_end='+end).then(function(d){
+            $scope.hotelLists = d;
+            $scope.isData = d.list[0] ? "true" : "false"; //是否有数据
+        })
+
     }
 
 })
